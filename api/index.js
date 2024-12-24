@@ -35,21 +35,28 @@ db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));
 
 //static folder paths
+// Serve static files for the "products" folder
+app.use('/photos/products', express.static('photos/product'));
 
+// Serve static files for the "category" folder
+app.use('/photos/category', express.static('photos/category'));
+
+// Serve static files for the "poster" folder (adjust the path if the folder is elsewhere)
+app.use('/photos/poster', express.static('photos/poster'));
 
 //route usage
-app.use('/brands', brandRoute);
-app.use('/categories', categoryRoute);
-app.use('/couponCodes', couponCodeRoute);
-app.use('/notifications', notificationRoute);
-app.use('/orders', orderRoute);
-app.use('/payments', paymentRoute);
-app.use('/posters', posterRoute);
-app.use('/products', productRoute);
-app.use('/subCategories', subCategoryRoute);
-app.use('/users', userRoute);
-app.use('/variants', variantRoute);
-app.use('/variantTypes', variantTypeRoute);
+app.use('/api/brands', brandRoute);
+app.use('/api/categories', categoryRoute);
+app.use('/api/couponCodes', couponCodeRoute);
+app.use('/api/notifications', notificationRoute);
+app.use('/api/orders', orderRoute);
+app.use('/api/payments', paymentRoute);
+app.use('/api/posters', posterRoute);
+app.use('/api/products', productRoute);
+app.use('/api/subCategories', subCategoryRoute);
+app.use('/api/users', userRoute);
+app.use('/api/variants', variantRoute);
+app.use('/api/variantTypes', variantTypeRoute);
 
 
 //default route

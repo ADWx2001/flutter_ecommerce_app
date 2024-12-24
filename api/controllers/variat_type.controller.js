@@ -1,6 +1,6 @@
-const VariantType = require('../model/variantType');
-const Product = require('../model/product');
-const Variant = require('../model/variant');
+import Variant from '../models/variant.model.js';
+import VariantType from '../models/variant_type.model.js';
+import Product from '../models/product.model.js';
 
 // Get all variant types
 export const getVariantTypes = async (req, res) => {

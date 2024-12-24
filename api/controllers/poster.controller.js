@@ -1,4 +1,4 @@
-import Poster from '../model/poster.js';
+import Poster from '../models/poster.model.js';
 import { uploadPosters } from '../uploadFile.js';
 import multer from 'multer';
 import asyncHandler from 'express-async-handler';

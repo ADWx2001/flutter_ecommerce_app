@@ -1,5 +1,5 @@
-const Variant = require('../model/variant');
-const Product = require('../model/product');
+import Variant from '../models/variant.model.js';
+import Product from '../models/product.model.js';
 
 // Get all variants
 export const getVariants = async (req, res) => {

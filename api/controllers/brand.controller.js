@@ -1,5 +1,5 @@
-import Brand from "../models/brand.model";
-import Product from "../models/product.model";
+import Brand from "../models/brand.model.js";
+import Product from "../models/product.model.js";
 
 // Get all brands
 export const  getAllBrands = async (req, res) => {

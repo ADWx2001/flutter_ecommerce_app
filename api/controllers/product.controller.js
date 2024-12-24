@@ -1,7 +1,8 @@
-const Product = require('../model/product');
-const multer = require('multer');
-const { uploadProduct } = require('../uploadFile');
-const asyncHandler = require('express-async-handler');
+
+import Product from '../models/product.model.js';
+import multer from 'multer';
+import asyncHandler from 'express-async-handler';
+import { uploadProduct } from '../uploadFile.js';
 
 // Get all products
 export const getAllProducts = asyncHandler(async (req, res) => {

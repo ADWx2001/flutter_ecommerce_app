@@ -5,12 +5,13 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import asyncHandler from 'express-async-handler';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 //all api routes
 import brandRoute from './routes/brand.route.js';
 import categoryRoute from './routes/category.route.js';
-import couponCodeRoute from './routes/couponCode.route.js';
+import couponCodeRoute from './routes/coupon.route.js';
 import notificationRoute from './routes/notification.route.js';
 import orderRoute from './routes/order.route.js';
 import paymentRoute from './routes/payment.route.js';
@@ -51,13 +52,11 @@ app.use('/variants', variantRoute);
 app.use('/variantTypes', variantTypeRoute);
 
 
-
-
-
+//default route
 app.get('/', (req, res) => {
     res.json('Hello World!');
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });

@@ -1,6 +1,6 @@
-const SubCategory = require('../model/subCategory');
-const Brand = require('../model/brand');
-const Product = require('../model/product');
+import SubCategory from '../models/subcategory.model.js';
+import Brand from '../models/brand.model.js';
+import Product from '../models/product.model.js';
 
 // Get all sub-categories
 export const getAllSubCategories = async (req, res) => {

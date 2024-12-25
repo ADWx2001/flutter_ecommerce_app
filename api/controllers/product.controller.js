@@ -32,38 +32,39 @@ export const getProductById = asyncHandler(async (req, res) => {
 
 // Create new product
 export const createProduct = asyncHandler(async (req, res) => {
-    uploadProduct.fields([
-        { name: 'image1', maxCount: 1 },
-        { name: 'image2', maxCount: 1 },
-        { name: 'image3', maxCount: 1 },
-        { name: 'image4', maxCount: 1 },
-        { name: 'image5', maxCount: 1 }
-    ])(req, res, async (err) => {
-        if (err instanceof multer.MulterError || err) {
-            console.error(`Add product: ${err}`);
-            return res.status(500).json({ success: false, message: err.message });
-        }
+    const { name, description, quantity, price, offerPrice, proCategoryId, proSubCategoryId, proBrandId, proVariantTypeId, proVariantId, images } = req.body;
+    console.log('Request Body:', req.body);
 
-        const { name, description, quantity, price, offerPrice, proCategoryId, proSubCategoryId, proBrandId, proVariantTypeId, proVariantId } = req.body;
+    if (!name || !quantity || !price) {
+        return res.status(400).json({ success: false, message: "Required fields are missing." });
+    }
 
-        if (!name || !quantity || !price || !proCategoryId || !proSubCategoryId) {
-            return res.status(400).json({ success: false, message: "Required fields are missing." });
-        }
+    // Process images for testing purposes (allow JSON input)
+    const imageUrls = images || [];
 
-        const imageUrls = [];
-        const fields = ['image1', 'image2', 'image3', 'image4', 'image5'];
-        fields.forEach((field, index) => {
-            if (req.files[field] && req.files[field].length > 0) {
-                const file = req.files[field][0];
-                imageUrls.push({ image: index + 1, url: `http://localhost:3000/image/products/${file.filename}` });
-            }
+    try {
+        const newProduct = new Product({
+            name,
+            description,
+            quantity,
+            price,
+            offerPrice,
+            proCategoryId,
+            proSubCategoryId,
+            proBrandId,
+            proVariantTypeId,
+            proVariantId,
+            images: imageUrls,
         });
 
-        const newProduct = new Product({ name, description, quantity, price, offerPrice, proCategoryId, proSubCategoryId, proBrandId, proVariantTypeId, proVariantId, images: imageUrls });
         await newProduct.save();
-        res.json({ success: true, message: "Product created successfully.", data: null });
-    });
+        res.json({ success: true, message: "Product created successfully.", data: newProduct });
+    } catch (error) {
+        console.error(`Error creating product: ${error.message}`);
+        res.status(500).json({ success: false, message: error.message });
+    }
 });
+
 
 // Update product
 export const updateProduct = asyncHandler(async (req, res) => {

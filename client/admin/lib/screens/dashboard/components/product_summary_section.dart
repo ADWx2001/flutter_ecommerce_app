@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/data/data_provider.dart';
-import '../../../models/product_summery_info.dart';
+import '../../../models/product_summary.dart';
 import '../../../utility/constants.dart';
-import 'product_summery_card.dart';
+import '../components/product_summary_card.dart';
 
 class ProductSummerySection extends StatelessWidget {
   const ProductSummerySection({

@@ -3,7 +3,7 @@ import '../../../models/coupon.dart';
 import 'add_coupon_form.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../utility/color_list.dart';
+import '../../../utility/colors.dart';
 import '../../../utility/constants.dart';
 
 

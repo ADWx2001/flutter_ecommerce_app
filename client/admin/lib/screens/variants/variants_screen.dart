@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../utility/constants.dart';
-import 'components/add_variant_form.dart';
+import './components/add_varaint_form.dart';
 import 'components/variant_header.dart';
-import 'components/variants_list_section.dart';
+import './components/variant_list_section.dart';
 
 
 class VariantsScreen extends StatelessWidget {

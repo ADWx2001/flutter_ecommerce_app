@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
-import 'notification_statics_card.dart';
+import 'notification_statistics_card.dart';
 
 class ViewNotificationForm extends StatelessWidget {
   final MyNotification? notification;

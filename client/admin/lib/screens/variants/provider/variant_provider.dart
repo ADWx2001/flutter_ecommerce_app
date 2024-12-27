@@ -5,7 +5,7 @@ import '../../../core/data/data_provider.dart';
 import '../../../models/api_response.dart';
 import '../../../models/variant.dart';
 import '../../../services/http_services.dart';
-import '../../../utility/snack_bar_helper.dart';
+import '../../../utility/snack_bar.dart';
 
 class VariantsProvider extends ChangeNotifier {
   HttpService service = HttpService();

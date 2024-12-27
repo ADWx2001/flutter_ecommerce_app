@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../utility/constants.dart';
-import '../../../models/product_summery_info.dart';
+import '../../../models/product_summary.dart';
 
 
 class ProductSummeryCard extends StatelessWidget {

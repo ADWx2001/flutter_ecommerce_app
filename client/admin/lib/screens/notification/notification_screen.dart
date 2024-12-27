@@ -1,22 +1,23 @@
-import 'components/dash_board_header.dart';
+import 'components/notification_header.dart';
+import 'components/notification_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../utility/constants.dart';
-import 'components/add_product_form.dart';
-import 'components/order_details_section.dart';
-import 'components/product_list_section.dart';
-import 'components/product_summary_section.dart';
+import 'components/send_notification_form.dart';
 
-class DashboardScreen extends StatelessWidget {
+
+
+
+class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return  SafeArea(
       child: SingleChildScrollView(
         primary: false,
         padding: EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-            DashBoardHeader(),
+            NotificationHeader(),
             Gap(defaultPadding),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,42 +31,39 @@ class DashboardScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              "My Products",
-                              style: Theme.of(context).textTheme.titleMedium,
+                              "My Notification",
+                              style: Theme
+                                  .of(context)
+                                  .textTheme
+                                  .titleMedium,
                             ),
                           ),
                           ElevatedButton.icon(
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.symmetric(
                                 horizontal: defaultPadding * 1.5,
-                                vertical: defaultPadding,
+                                vertical:
+                                defaultPadding,
                               ),
                             ),
                             onPressed: () {
-                              showAddProductForm(context, null);
+                              sendNotificationFormForm(context);
                             },
                             icon: Icon(Icons.add),
-                            label: Text("Add New"),
+                            label: Text("Send New"),
                           ),
                           Gap(20),
                           IconButton(
                               onPressed: () {
-                                //TODO: should complete call getAllProduct
+                                //TODO: should complete call getAllNotifications
                               },
                               icon: Icon(Icons.refresh)),
                         ],
                       ),
                       Gap(defaultPadding),
-                      ProductSummerySection(),
-                      Gap(defaultPadding),
-                      ProductListSection(),
+                      NotificationListSection(),
                     ],
                   ),
-                ),
-                SizedBox(width: defaultPadding),
-                Expanded(
-                  flex: 2,
-                  child: OrderDetailsSection(),
                 ),
               ],
             )

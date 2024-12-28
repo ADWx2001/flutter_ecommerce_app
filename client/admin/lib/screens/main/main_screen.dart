@@ -1,16 +1,33 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'provider/main_screen_provider.dart';
+import '../../utility/extensions.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'components/side_menu.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    context.dataProvider;
+    return Scaffold(
+      body: SafeArea(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: SideMenu(),
+            ),
+            Consumer<MainScreenProvider>(
+              builder: (context, provider, child) {
+                return Expanded(
+                  flex: 5,
+                  child: provider.selectedScreen,
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
